@@ -104,11 +104,14 @@ export default class MermaidEditing extends Plugin {
 		// multiple markdown converters that we have seen are using only `language-mermaid` class and not `mermaid` alone.
 		const code = writer.createContainerElement( 'code', {
 			class: 'language-mermaid'
-		}, writer.createText( data.item.getAttribute( 'source' ) ) );
+		} );
 		const pre = writer.createContainerElement( 'pre', {
 			spellcheck: 'false'
-		}, code );
+		} );
+		const sourceTextNode = writer.createText( data.item.getAttribute( 'source' ) );
 
+		writer.insert( model.createPositionAt( code, 'end' ), sourceTextNode );
+		writer.insert( model.createPositionAt( pre, 'end' ), code );
 		writer.insert( targetViewPosition, pre );
 		mapper.bindElements( data.item, code );
 	}
