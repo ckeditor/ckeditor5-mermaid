@@ -1,0 +1,110 @@
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import { getData as getModelData, setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
+import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+
+import MermaidSourceViewCommand from '../../src/commands/mermaidSourceViewCommand';
+import MermaidEditing from '../../src/mermaidediting';
+
+/* global document */
+
+describe( 'MermaidSourceViewCommand', () => {
+	let domElement, editor, model, command;
+
+	beforeEach( async () => {
+		domElement = document.createElement( 'div' );
+		document.body.appendChild( domElement );
+
+		editor = await ClassicEditor.create( domElement, {
+			plugins: [
+				MermaidEditing,
+				Paragraph
+			]
+		} );
+
+		model = editor.model;
+
+		command = new MermaidSourceViewCommand( editor );
+	} );
+
+	afterEach( () => {
+		domElement.remove();
+		return editor.destroy();
+	} );
+
+	describe( '#value', () => {
+		it( 'should be true when mermaid element has displayMode attribute equal to "preview"', () => {
+			setModelData( model, '<mermaid displayMode="preview" source="foo"></mermaid>' );
+
+			expect( command.value ).to.equal( false );
+		} );
+
+		it( 'should be false when mermaid element has displayMode attribute equal to "split"', () => {
+			setModelData( model, '<mermaid displayMode="split" source="foo"></mermaid>' );
+
+			expect( command.value ).to.equal( false );
+		} );
+
+		it( 'should be false when mermaid element has displayMode attribute equal to "source"', () => {
+			setModelData( model, '<mermaid displayMode="source" source="foo"></mermaid>' );
+
+			expect( command.value ).to.equal( true );
+		} );
+	} );
+
+	describe( '#isEnabled', () => {
+		describe( 'should be false', () => {
+			it( 'when text is selected', () => {
+				setModelData( model,
+					'<paragraph>[foo]</paragraph>' +
+					'<mermaid source="flowchart TB\nA --> B\nB --> C"></mermaid>'
+				);
+
+				expect( command.isEnabled ).to.be.false;
+			} );
+
+			it( 'when mermaid is part of the selection', () => {
+				setModelData( model,
+					'<paragraph>[foo</paragraph>' +
+					'<mermaid source="flowchart TB\nA --> B\nB --> C"></mermaid>' +
+					'<paragraph>b]az</paragraph>'
+				);
+
+				expect( command.isEnabled ).to.be.false;
+			} );
+		} );
+
+		describe( 'should be true', () => {
+			it( 'when selection is inside mermaid', () => {
+				setModelData( model,
+					'<paragraph>foo</paragraph>' +
+					'<mermaid source="flowchart TB\nA --> B\nB --> C">[]</mermaid>'
+				);
+
+				expect( command.isEnabled ).to.be.true;
+			} );
+
+			it( 'when mermaid is selected', () => {
+				setModelData( model,
+					'<paragraph>foo</paragraph>' +
+					'[<mermaid source="flowchart TB\nA --> B\nB --> C"></mermaid>]'
+				);
+
+				expect( command.isEnabled ).to.be.true;
+			} );
+		} );
+	} );
+
+	describe( 'execute()', () => {
+		it( 'should add text', () => {
+			setModelData( model,
+				'[<mermaid displayMode="preview" source="foo"></mermaid>]'
+			);
+
+			command.execute();
+
+			expect( getModelData( model ) ).to.equal(
+				'[<mermaid displayMode="source" source="foo"></mermaid>]'
+			);
+		} );
+	} );
+} );

@@ -1,0 +1,56 @@
+{
+  "name": "@ckeditor/ckeditor5-mermaid",
+  "version": "0.0.1",
+  "description": "Mermaid widget for CKEditor 5.",
+  "private": true,
+  "keywords": [
+    "ckeditor",
+    "ckeditor5",
+    "ckeditor 5",
+    "ckeditor5-feature",
+    "ckeditor5-plugin",
+    "ckeditor5-mermaid"
+  ],
+  "main": "src/index.js",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "CKSource (https://cksource.com/)",
+  "homepage": "https://github.com/ckeditor/ckeditor5-mermaid",
+  "bugs": "https://github.com/ckeditor/ckeditor5-mermaid/issues",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=5.7.1"
+  },
+  "files": [
+    "lang",
+    "src",
+    "theme",
+    "build",
+    "ckeditor5-metadata.json"
+  ],
+  "dependencies": {
+    "ckeditor5": "^32.0.0",
+    "mermaid": "^8.14.0",
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^32.0.0",
+    "@ckeditor/ckeditor5-clipboard": "^32.0.0",
+    "@ckeditor/ckeditor5-code-block": "^32.0.0",
+    "@ckeditor/ckeditor5-editor-classic": "^32.0.0",
+    "@ckeditor/ckeditor5-engine": "^32.0.0",
+    "@ckeditor/ckeditor5-enter": "^32.0.0",
+    "@ckeditor/ckeditor5-essentials": "^32.0.0",
+    "@ckeditor/ckeditor5-heading": "^32.0.0",
+    "@ckeditor/ckeditor5-link": "^32.0.0",
+    "@ckeditor/ckeditor5-markdown-gfm": "^32.0.0",
+    "@ckeditor/ckeditor5-paragraph": "^32.0.0",
+    "@ckeditor/ckeditor5-typing": "^32.0.0",
+    "@ckeditor/ckeditor5-undo": "^32.0.0",
+    "@ckeditor/ckeditor5-widget": "^32.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-ckeditor5": ">=3.1.1"
+  },
+  "scripts": {
+    "dll:build": "webpack"
+  }
+}
