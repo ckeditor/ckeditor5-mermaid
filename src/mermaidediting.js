@@ -173,6 +173,7 @@ export default class MermaidEditing extends Plugin {
 
 			domElement.addEventListener( 'input', debouncedListener );
 
+			/* Workaround for internal #1544 */
 			domElement.addEventListener( 'focus', () => {
 				const model = editor.model;
 				const selectedElement = model.document.selection.getSelectedElement();
@@ -227,7 +228,6 @@ export default class MermaidEditing extends Plugin {
 				} else if ( child.name === 'div' && child.hasClass( 'ck-mermaid__preview' ) ) {
 					// @todo: we could optimize this and not refresh mermaid if widget is in source mode.
 					const domPreviewWrapper = domConverter.viewToDom( child, window.document );
-					// console.log( child, domPreviewWrapper );
 
 					if ( domPreviewWrapper ) {
 						domPreviewWrapper.innerHTML = newSource;
