@@ -86,7 +86,7 @@ export default class MermaidUI extends Plugin {
 
 		editor.ui.componentFactory.add( 'mermaidInfo', locale => {
 			const buttonView = new ButtonView( locale );
-			const link = 'https://mermaid-js.github.io/mermaid/#/flowchart';
+			const link = 'https://ckeditor.com/blog/github-writer-now-available-with-mermaid-support/';
 
 			buttonView.set( {
 				label: t( 'Read more about Mermaid diagram syntax' ),
