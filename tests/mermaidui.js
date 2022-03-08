@@ -36,7 +36,7 @@ describe( 'MermaidUI', () => {
 		it( 'has the base properties', () => {
 			const button = editor.ui.componentFactory.create( 'mermaid' );
 
-			expect( button ).to.have.property( 'label', 'Insert Mermaid' );
+			expect( button ).to.have.property( 'label', 'Insert Mermaid diagram' );
 			expect( button ).to.have.property( 'icon' );
 			expect( button ).to.have.property( 'tooltip', true );
 		} );
