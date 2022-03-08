@@ -52,7 +52,7 @@ export default class MermaidUI extends Plugin {
 		const editor = this.editor;
 		const t = editor.t;
 
-		editor.ui.componentFactory.add( 'Mermaid', locale => {
+		editor.ui.componentFactory.add( 'mermaid', locale => {
 			const buttonView = new ButtonView( locale );
 			const command = editor.commands.get( 'insertMermaidCommand' );
 
