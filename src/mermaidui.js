@@ -57,7 +57,7 @@ export default class MermaidUI extends Plugin {
 			const command = editor.commands.get( 'insertMermaidCommand' );
 
 			buttonView.set( {
-				label: t( 'Insert Mermaid' ),
+				label: t( 'Insert Mermaid diagram' ),
 				icon: insertMermaidIcon,
 				tooltip: true
 			} );
