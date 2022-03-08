@@ -47,10 +47,41 @@
     "@ckeditor/ckeditor5-typing": "^32.0.0",
     "@ckeditor/ckeditor5-undo": "^32.0.0",
     "@ckeditor/ckeditor5-widget": "^32.0.0",
+    "@ckeditor/ckeditor5-package-tools": "^1.0.0-beta.4",
+    "@ckeditor/ckeditor5-theme-lark": ">=32.0.0",
     "eslint": "^7.32.0",
-    "eslint-config-ckeditor5": ">=3.1.1"
+    "eslint-config-ckeditor5": ">=3.1.1",
+    "http-server": "^14.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6",
+    "stylelint": "^13.13.1",
+    "stylelint-config-ckeditor5": ">=2.0.1"
   },
+
   "scripts": {
-    "dll:build": "webpack"
+    "dll:build": "ckeditor5-package-tools dll:build",
+    "dll:serve": "http-server ./ -o sample/dll.html",
+    "lint": "eslint \"**/*.js\" --quiet --ignore-pattern \"build/\"",
+    "start": "ckeditor5-package-tools start",
+    "stylelint": "stylelint --quiet --allow-empty-input 'theme/*.css'",
+    "test": "ckeditor5-package-tools test",
+    "prepare": "yarn run dll:build",
+    "prepublishOnly": "yarn run dll:build",
+    "translations:collect": "ckeditor5-package-tools translations:collect",
+    "translations:download": "ckeditor5-package-tools translations:download",
+    "translations:upload": "ckeditor5-package-tools translations:upload"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --quiet"
+    ],
+    "**/*.css": [
+      "stylelint --quiet --allow-empty-input"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
