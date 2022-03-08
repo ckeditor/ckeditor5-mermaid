@@ -89,7 +89,7 @@ export default class MermaidUI extends Plugin {
 			const link = 'https://mermaid-js.github.io/mermaid/#/flowchart';
 
 			buttonView.set( {
-				label: t( 'Mermaid info' ),
+				label: t( 'Read more about Mermaid diagram syntax' ),
 				icon: infoIcon,
 				tooltip: true
 			} );
