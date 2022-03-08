@@ -4,9 +4,9 @@
 
 import infoIcon from './../theme/icons/info.svg';
 import insertMermaidIcon from './../theme/icons/insert.svg';
-import previewModeIcon from './../theme/icons/previewMode.svg';
-import splitModeIcon from './../theme/icons/splitMode.svg';
-import sourceModeIcon from './../theme/icons/sourceMode.svg';
+import previewModeIcon from './../theme/icons/preview-mode.svg';
+import splitModeIcon from './../theme/icons/split-mode.svg';
+import sourceModeIcon from './../theme/icons/source-mode.svg';
 
 export { default as Mermaid } from './mermaid';
 
