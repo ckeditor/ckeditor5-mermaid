@@ -6,9 +6,9 @@ import { Plugin } from 'ckeditor5/src/core';
 import { ButtonView } from 'ckeditor5/src/ui';
 
 import insertMermaidIcon from '../theme/icons/insert.svg';
-import previewModeIcon from '../theme/icons/previewMode.svg';
-import splitModeIcon from '../theme/icons/splitMode.svg';
-import sourceModeIcon from '../theme/icons/sourceMode.svg';
+import previewModeIcon from '../theme/icons/preview-mode.svg';
+import splitModeIcon from '../theme/icons/split-mode.svg';
+import sourceModeIcon from '../theme/icons/source-mode.svg';
 import infoIcon from '../theme/icons/info.svg';
 
 /* global window */
@@ -52,7 +52,7 @@ export default class MermaidUI extends Plugin {
 		const editor = this.editor;
 		const t = editor.t;
 
-		editor.ui.componentFactory.add( 'Mermaid', locale => {
+		editor.ui.componentFactory.add( 'mermaid', locale => {
 			const buttonView = new ButtonView( locale );
 			const command = editor.commands.get( 'insertMermaidCommand' );
 
@@ -89,7 +89,7 @@ export default class MermaidUI extends Plugin {
 			const link = 'https://mermaid-js.github.io/mermaid/#/flowchart';
 
 			buttonView.set( {
-				label: t( 'Mermaid info' ),
+				label: t( 'Read more about Mermaid diagram syntax' ),
 				icon: infoIcon,
 				tooltip: true
 			} );
