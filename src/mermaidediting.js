@@ -173,6 +173,16 @@ export default class MermaidEditing extends Plugin {
 
 			domElement.addEventListener( 'input', debouncedListener );
 
+			domElement.addEventListener( 'focus', () => {
+				const model = editor.model;
+				const selectedElement = model.document.selection.getSelectedElement();
+
+				// Move the selection onto the mermaid widget if it's currently not selected.
+				if ( selectedElement !== data.item ) {
+					model.change( writer => writer.setSelection( data.item, 'on' ) );
+				}
+			}, true );
+
 			return domElement;
 		}
 
