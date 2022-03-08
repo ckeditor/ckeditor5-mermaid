@@ -6,9 +6,9 @@ import { Plugin } from 'ckeditor5/src/core';
 import { ButtonView } from 'ckeditor5/src/ui';
 
 import insertMermaidIcon from '../theme/icons/insert.svg';
-import previewModeIcon from '../theme/icons/previewMode.svg';
-import splitModeIcon from '../theme/icons/splitMode.svg';
-import sourceModeIcon from '../theme/icons/sourceMode.svg';
+import previewModeIcon from '../theme/icons/preview-mode.svg';
+import splitModeIcon from '../theme/icons/split-mode.svg';
+import sourceModeIcon from '../theme/icons/source-mode.svg';
 import infoIcon from '../theme/icons/info.svg';
 
 /* global window */
