@@ -1,6 +1,5 @@
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import { getData as getModelData, setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+import { setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
 
 import Mermaid from '../src/mermaid';
 import MermaidUI from '../src/mermaidui';
@@ -21,8 +20,7 @@ describe( 'MermaidUI', () => {
 
 			editor = await ClassicEditor.create( domElement, {
 				plugins: [
-					Mermaid,
-					Paragraph
+					Mermaid
 				]
 			} );
 		} );
@@ -76,9 +74,7 @@ describe( 'MermaidUI', () => {
 		it( 'should not crash if the button is fired inside model.change()', () => {
 			const button = editor.ui.componentFactory.create( 'mermaid' );
 
-			setModelData( editor.model,
-				'<paragraph>[foo]</paragraph>'
-			);
+			setModelData( editor.model, '[]' );
 
 			editor.model.change( () => {
 				button.fire( 'execute' );
