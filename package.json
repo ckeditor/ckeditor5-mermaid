@@ -41,6 +41,7 @@
     "@ckeditor/ckeditor5-enter": "^32.0.0",
     "@ckeditor/ckeditor5-essentials": "^32.0.0",
     "@ckeditor/ckeditor5-heading": "^32.0.0",
+    "@ckeditor/ckeditor5-inspector": "^3.0.0",
     "@ckeditor/ckeditor5-link": "^32.0.0",
     "@ckeditor/ckeditor5-markdown-gfm": "^32.0.0",
     "@ckeditor/ckeditor5-paragraph": "^32.0.0",
