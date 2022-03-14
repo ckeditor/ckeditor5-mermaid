@@ -69,17 +69,16 @@ export default class MermaidUI extends Plugin {
 			command.listenTo( buttonView, 'execute', () => {
 				const mermaidItem = editor.execute( 'insertMermaidCommand' );
 				const mermaidItemViewElement = editor.editing.mapper.toViewElement( mermaidItem );
-				let mermaidItemDomElement;
-
-				if ( mermaidItemViewElement ) {
-					mermaidItemDomElement = view.domConverter.viewToDom( mermaidItemViewElement, document );
-				}
 
 				view.scrollToTheSelection();
 				view.focus();
 
-				if ( mermaidItemDomElement ) {
-					mermaidItemDomElement.querySelector( '.ck-mermaid__editing-view' ).focus();
+				if ( mermaidItemViewElement ) {
+					const mermaidItemDomElement = view.domConverter.viewToDom( mermaidItemViewElement, document );
+
+					if ( mermaidItemDomElement ) {
+						mermaidItemDomElement.querySelector( '.ck-mermaid__editing-view' ).focus();
+					}
 				}
 			} );
 
