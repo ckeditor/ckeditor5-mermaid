@@ -36,16 +36,17 @@ export default class InsertMermaidCommand extends Command {
 	execute() {
 		const editor = this.editor;
 		const model = editor.model;
+		let mermaidItem;
 
 		model.change( writer => {
-			const item = writer.createElement( 'mermaid', {
+			mermaidItem = writer.createElement( 'mermaid', {
 				displayMode: 'split',
 				source: MOCK_MERMAID_MARKUP
 			} );
 
-			model.insertContent( item );
+			model.insertContent( mermaidItem );
 		} );
 
-		editor.editing.view.focus();
+		return mermaidItem;
 	}
 }

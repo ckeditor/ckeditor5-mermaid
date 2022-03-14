@@ -1,4 +1,5 @@
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import { setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
 
 import Mermaid from '../src/mermaid';
 import MermaidUI from '../src/mermaidui';
@@ -60,6 +61,27 @@ describe( 'MermaidUI', () => {
 					expect( button ).to.have.property( 'tooltip', true );
 				} );
 			}
+		} );
+
+		it( 'should set focus inside textarea of a newly created mermaid', () => {
+			const button = editor.ui.componentFactory.create( 'mermaid' );
+
+			button.fire( 'execute' );
+
+			expect( document.activeElement.tagName ).to.equal( 'TEXTAREA' );
+		} );
+
+		it( 'should not crash if the button is fired inside model.change()', () => {
+			const button = editor.ui.componentFactory.create( 'mermaid' );
+
+			setModelData( editor.model, '[]' );
+
+			editor.model.change( () => {
+				button.fire( 'execute' );
+			} );
+			// As the conversion is to be executed after the model.change(), we don't have access to the fully prepared view and
+			// despite that, we should still successfully add mermaid widget to the editor, not requiring the selection change
+			// to the inside of the nonexisting textarea element.
 		} );
 	} );
 } );

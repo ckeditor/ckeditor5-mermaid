@@ -11,7 +11,7 @@ import splitModeIcon from '../theme/icons/split-mode.svg';
 import sourceModeIcon from '../theme/icons/source-mode.svg';
 import infoIcon from '../theme/icons/info.svg';
 
-/* global window */
+/* global window, document */
 
 export default class MermaidUI extends Plugin {
 	/**
@@ -51,6 +51,7 @@ export default class MermaidUI extends Plugin {
 	_addInsertMermaidButton() {
 		const editor = this.editor;
 		const t = editor.t;
+		const view = editor.editing.view;
 
 		editor.ui.componentFactory.add( 'mermaid', locale => {
 			const buttonView = new ButtonView( locale );
@@ -66,9 +67,19 @@ export default class MermaidUI extends Plugin {
 
 			// Execute the command when the button is clicked.
 			command.listenTo( buttonView, 'execute', () => {
-				editor.execute( 'insertMermaidCommand' );
-				editor.editing.view.scrollToTheSelection();
-				editor.editing.view.focus();
+				const mermaidItem = editor.execute( 'insertMermaidCommand' );
+				const mermaidItemViewElement = editor.editing.mapper.toViewElement( mermaidItem );
+
+				view.scrollToTheSelection();
+				view.focus();
+
+				if ( mermaidItemViewElement ) {
+					const mermaidItemDomElement = view.domConverter.viewToDom( mermaidItemViewElement, document );
+
+					if ( mermaidItemDomElement ) {
+						mermaidItemDomElement.querySelector( '.ck-mermaid__editing-view' ).focus();
+					}
+				}
 			} );
 
 			return buttonView;
