@@ -19,36 +19,50 @@ import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
 import Mermaid from '../src/mermaid';
 
-ClassicEditor
-	.create( document.querySelector( '#editor' ), {
-		plugins: [
-			Typing,
-			Paragraph,
-			Undo,
-			Enter,
-			Clipboard,
-			Link,
-			Bold,
-			Italic,
-			CodeBlock,
-			Mermaid
-		],
-		toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'codeBlock', 'mermaid' ],
-		codeBlock: {
-			languages: [
-				{ language: 'plaintext', label: 'Plain text', class: '' },
-				{ language: 'javascript', label: 'JavaScript' },
-				{ language: 'python', label: 'Python' },
-				{ language: 'mermaid', label: 'Mermaid' }
-			]
-		}
+function initEditor() {
+	let editor;
 
-	} )
-	.then( editor => {
-		window.editor = editor;
-		CKEditorInspector.attach( editor );
-		window.console.log( 'CKEditor 5 is ready.', editor );
-	} )
-	.catch( err => {
-		console.error( err.stack );
-	} );
+	ClassicEditor
+		.create( document.querySelector( '#editor' ), {
+			plugins: [
+				Typing,
+				Paragraph,
+				Undo,
+				Enter,
+				Clipboard,
+				Link,
+				Bold,
+				Italic,
+				CodeBlock,
+				Mermaid
+			],
+			toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'codeBlock', 'mermaid' ],
+			codeBlock: {
+				languages: [
+					{ language: 'plaintext', label: 'Plain text', class: '' },
+					{ language: 'javascript', label: 'JavaScript' },
+					{ language: 'python', label: 'Python' },
+					{ language: 'mermaid', label: 'Mermaid' }
+				]
+			}
+
+		} )
+		.then( newEditor => {
+			editor = newEditor;
+			CKEditorInspector.attach( editor );
+			window.console.log( 'CKEditor 5 is ready.', editor );
+
+			document.getElementById( 'destroyEditor' ).addEventListener( 'click', destroyEditor );
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+
+	function destroyEditor() {
+		editor.destroy().then( () => console.log( 'Editor was destroyed' ) );
+		editor = null;
+		document.getElementById( 'destroyEditor' ).removeEventListener( 'click', destroyEditor );
+	}
+}
+
+document.getElementById( 'initEditor' ).addEventListener( 'click', initEditor );

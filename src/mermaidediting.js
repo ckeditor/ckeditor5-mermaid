@@ -174,17 +174,25 @@ export default class MermaidEditing extends Plugin {
 			domElement.addEventListener( 'input', debouncedListener );
 
 			/* Workaround for internal #1544 */
-			domElement.addEventListener( 'focus', () => {
-				const model = editor.model;
-				const selectedElement = model.document.selection.getSelectedElement();
+			domElement.addEventListener( 'focus', focusListener, true );
 
-				// Move the selection onto the mermaid widget if it's currently not selected.
-				if ( selectedElement !== data.item ) {
-					model.change( writer => writer.setSelection( data.item, 'on' ) );
-				}
-			}, true );
+			// Remove the focus and input listener on editor#destroy.
+			editor.on( 'destroy', () => {
+				domElement.removeEventListener( 'input', debouncedListener );
+				domElement.removeEventListener( 'focus', focusListener );
+			} );
 
 			return domElement;
+		}
+
+		function focusListener( ) {
+			const model = editor.model;
+			const selectedElement = model.document.selection.getSelectedElement();
+
+			// Move the selection onto the mermaid widget if it's currently not selected.
+			if ( selectedElement !== data.item ) {
+				model.change( writer => writer.setSelection( data.item, 'on' ) );
+			}
 		}
 
 		function createMermaidPreview( domDocument ) {
