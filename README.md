@@ -7,9 +7,9 @@ This package contains a Mermaid feature for CKEditor 5.
 
 ## CKEditor 5 Mermaid - Running manual test
 
-You can test all of the functionalities of the CKEdtitor 5 mermaid feature with the manual test sample.
+You can test all of the features of the `ckeditor5-mermaid` plugin with the manual test sample.
 
-Having the build in place, it's enough to execute the following at the root of your local clone of the project:
+After installing dependencies it's enough to execute the following script at the root of your local clone of the project:
 
 ```
 yarn start
