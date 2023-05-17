@@ -28,9 +28,11 @@
     "ckeditor5-metadata.json"
   ],
   "dependencies": {
-    "ckeditor5": "^35.0.1",
-    "mermaid": "^9.1.4",
+    "mermaid": "9.1.7",
     "lodash-es": "^4.17.15"
+  },
+  "peerDependencies": {
+    "ckeditor5": "*"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-basic-styles": "^35.0.1",
