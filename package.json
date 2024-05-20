@@ -53,7 +53,7 @@
     "@ckeditor/ckeditor5-typing": "^41.4.2",
     "@ckeditor/ckeditor5-undo": "^41.4.2",
     "@ckeditor/ckeditor5-widget": "^41.4.2",
-    "@ckeditor/ckeditor5-package-tools": "file:/Users/piotrszczesniak/Dev/ckeditor5-package-generator/packages/ckeditor5-package-tools",
+    "@ckeditor/ckeditor5-package-tools": "^1.1.0",
     "@ckeditor/ckeditor5-theme-lark": "^41.4.2",
     "eslint": "^7.32.0",
     "eslint-config-ckeditor5": ">=3.1.1",
