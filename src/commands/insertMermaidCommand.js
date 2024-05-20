@@ -2,7 +2,7 @@
  * @module mermaid/insertmermaidcommand
  */
 
-import { Command } from 'ckeditor5/src/core';
+import { Command } from 'ckeditor5/src/core.js';
 
 const MOCK_MERMAID_MARKUP = `flowchart TB
 A --> B

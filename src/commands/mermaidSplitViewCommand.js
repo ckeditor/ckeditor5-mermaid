@@ -2,9 +2,9 @@
  * @module mermaid/mermaidsplitviewcommand
  */
 
-import { Command } from 'ckeditor5/src/core';
+import { Command } from 'ckeditor5/src/core.js';
 
-import { checkIsOn } from '../utils';
+import { checkIsOn } from '../utils.js';
 
 /**
  * The mermaid split view command.

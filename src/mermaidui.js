@@ -2,8 +2,8 @@
  * @module mermaid/mermaidui
  */
 
-import { Plugin } from 'ckeditor5/src/core';
-import { ButtonView } from 'ckeditor5/src/ui';
+import { Plugin } from 'ckeditor5/src/core.js';
+import { ButtonView } from 'ckeditor5/src/ui.js';
 
 import insertMermaidIcon from '../theme/icons/insert.svg';
 import previewModeIcon from '../theme/icons/preview-mode.svg';

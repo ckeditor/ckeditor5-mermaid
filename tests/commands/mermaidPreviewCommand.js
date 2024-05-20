@@ -1,9 +1,9 @@
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import { getData as getModelData, setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
+import { getData as getModelData, setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model.js';
+import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 
-import MermaidPreviewCommand from '../../src/commands/mermaidPreviewCommand';
-import MermaidEditing from '../../src/mermaidediting';
+import MermaidPreviewCommand from '../../src/commands/mermaidPreviewCommand.js';
+import MermaidEditing from '../../src/mermaidediting.js';
 
 /* global document */
 

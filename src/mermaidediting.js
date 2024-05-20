@@ -2,17 +2,17 @@
  * @module mermaid/mermaidediting
  */
 
-import { Plugin } from 'ckeditor5/src/core';
-import { toWidget } from 'ckeditor5/src/widget';
+import { Plugin } from 'ckeditor5/src/core.js';
+import { toWidget } from 'ckeditor5/src/widget.js';
 
-import mermaid from 'mermaid/dist/mermaid';
+import mermaid from 'mermaid/dist/mermaid.js';
 
 import { debounce } from 'lodash-es';
 
-import MermaidPreviewCommand from './commands/mermaidPreviewCommand';
-import MermaidSourceViewCommand from './commands/mermaidSourceViewCommand';
-import MermaidSplitViewCommand from './commands/mermaidSplitViewCommand';
-import InsertMermaidCommand from './commands/insertMermaidCommand';
+import MermaidPreviewCommand from './commands/mermaidPreviewCommand.js';
+import MermaidSourceViewCommand from './commands/mermaidSourceViewCommand.js';
+import MermaidSplitViewCommand from './commands/mermaidSplitViewCommand.js';
+import InsertMermaidCommand from './commands/insertMermaidCommand.js';
 
 // Time in milliseconds.
 const DEBOUNCE_TIME = 300;

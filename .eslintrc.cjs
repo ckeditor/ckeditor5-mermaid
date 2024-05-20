@@ -21,5 +21,11 @@ module.exports = {
 				'ckeditor5-rules/ckeditor-imports': 'off'
 			}
 		}
+	],
+	ignorePatterns: [
+		// Ignore the entire `build/` (the DLL build).
+		'build/**',
+		// Ignore the entire `dist/`.
+		'dist/**'
 	]
 };
