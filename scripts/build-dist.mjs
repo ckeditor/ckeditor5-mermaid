@@ -52,7 +52,7 @@ function dist( path ) {
 		sourceMap: true,
 		minify: true,
 		browser: true,
-		name: '<%= formattedNames.plugin.lowerCaseMerged %>',
+		name: '@ckeditor/ckeditor5-mermaid',
 		external: [
 			'ckeditor5',
 			'ckeditor5-premium-features'
