@@ -8,7 +8,7 @@ import previewModeIcon from './../theme/icons/preview-mode.svg';
 import splitModeIcon from './../theme/icons/split-mode.svg';
 import sourceModeIcon from './../theme/icons/source-mode.svg';
 
-export { default as Mermaid } from './mermaid';
+export { default as Mermaid } from './mermaid.js';
 
 export const icons = {
 	infoIcon,

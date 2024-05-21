@@ -2,11 +2,11 @@
  * @module mermaid/mermaid
  */
 
-import { Plugin } from 'ckeditor5/src/core';
+import { Plugin } from 'ckeditor5';
 
-import MermaidEditing from './mermaidediting';
-import MermaidToolbar from './mermaidtoolbar';
-import MermaidUI from './mermaidui';
+import MermaidEditing from './mermaidediting.js';
+import MermaidToolbar from './mermaidtoolbar.js';
+import MermaidUI from './mermaidui.js';
 
 import '../theme/mermaid.css';
 

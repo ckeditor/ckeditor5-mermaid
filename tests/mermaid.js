@@ -1,10 +1,12 @@
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import Heading from '@ckeditor/ckeditor5-heading/src/heading';
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import Mermaid from '../src/mermaid';
+import {
+	ClassicEditor,
+	Essentials,
+	Heading,
+	Paragraph,
+	_setModelData as setModelData
+} from 'ckeditor5';
 
-import { setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
+import Mermaid from '../src/mermaid';
 
 /* global document */
 
