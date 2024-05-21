@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-build-tools": "^40.0.0",
-    "@ckeditor/ckeditor5-package-tools": "file:/Users/piotrszczesniak/Dev/ckeditor5-package-generator/packages/ckeditor5-package-tools",
+    "@ckeditor/ckeditor5-package-tools": "^1.1.0",
     "ckeditor5": "nightly",
     "eslint": "^7.32.0",
     "eslint-config-ckeditor5": ">=3.1.1",
