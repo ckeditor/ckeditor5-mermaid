@@ -22,6 +22,8 @@ import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 
 import Mermaid from '../src/mermaid.js';
 
+import 'ckeditor5/index.css';
+
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [
