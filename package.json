@@ -13,6 +13,17 @@
   ],
   "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./translations/*.js": {
+      "import": "./dist/translations/*.js"
+    },
+    "./*.css": "./dist/*.css",
+    "./package.json": "./package.json"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "CKSource (https://cksource.com/)",
   "homepage": "https://github.com/ckeditor/ckeditor5-mermaid",
@@ -27,9 +38,6 @@
   "dependencies": {
     "mermaid": "9.1.7",
     "lodash-es": "^4.17.15"
-  },
-  "peerDependencies": {
-    "ckeditor5": "*"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-build-tools": "^40.0.0",
