@@ -21,5 +21,8 @@ module.exports = {
 				'ckeditor5-rules/ckeditor-imports': 'off'
 			}
 		}
+	],
+	ignorePatterns: [
+		'dist/**'
 	]
 };
