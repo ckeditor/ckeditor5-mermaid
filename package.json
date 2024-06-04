@@ -30,31 +30,14 @@
     "ckeditor5-metadata.json"
   ],
   "dependencies": {
-    "mermaid": "9.1.7",
+    "mermaid": "^9.1.4",
     "lodash-es": "^4.17.15"
   },
-  "peerDependencies": {
-    "ckeditor5": "*"
-  },
   "devDependencies": {
-    "@ckeditor/ckeditor5-basic-styles": "^41.4.2",
-    "@ckeditor/ckeditor5-clipboard": "^41.4.2",
-    "@ckeditor/ckeditor5-code-block": "^41.4.2",
-    "@ckeditor/ckeditor5-dev-build-tools": "^40.0.0",
-    "@ckeditor/ckeditor5-editor-classic": "^41.4.2",
-    "@ckeditor/ckeditor5-engine": "^41.4.2",
-    "@ckeditor/ckeditor5-enter": "^41.4.2",
-    "@ckeditor/ckeditor5-essentials": "^41.4.2",
-    "@ckeditor/ckeditor5-heading": "^41.4.2",
+    "@ckeditor/ckeditor5-dev-build-tools": "^40.2.0",
     "@ckeditor/ckeditor5-inspector": "^4.0.0",
-    "@ckeditor/ckeditor5-link": "^41.4.2",
-    "@ckeditor/ckeditor5-markdown-gfm": "^41.4.2",
-    "@ckeditor/ckeditor5-paragraph": "^41.4.2",
-    "@ckeditor/ckeditor5-typing": "^41.4.2",
-    "@ckeditor/ckeditor5-undo": "^41.4.2",
-    "@ckeditor/ckeditor5-widget": "^41.4.2",
     "@ckeditor/ckeditor5-package-tools": "^1.1.0",
-    "@ckeditor/ckeditor5-theme-lark": "^41.4.2",
+    "ckeditor5": "nightly",
     "eslint": "^7.32.0",
     "eslint-config-ckeditor5": ">=3.1.1",
     "http-server": "^14.1.0",
@@ -63,7 +46,9 @@
     "stylelint": "^13.13.1",
     "stylelint-config-ckeditor5": ">=2.0.1"
   },
-
+  "peerDependencies": {
+    "ckeditor5": ">=42.0.0 || ^0.0.0-nightly"
+  },
   "scripts": {
     "dll:build": "ckeditor5-package-tools dll:build",
     "dll:serve": "http-server ./ -o sample/dll.html",
