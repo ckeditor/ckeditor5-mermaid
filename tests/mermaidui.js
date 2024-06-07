@@ -1,5 +1,5 @@
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
-import { setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model.js';
+import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
+import { _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
 
 import Mermaid from '../src/mermaid.js';
 import MermaidUI from '../src/mermaidui.js';

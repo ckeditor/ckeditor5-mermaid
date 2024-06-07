@@ -1,10 +1,8 @@
-import ClassicTestEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
-import {
-	setData
-} from '@ckeditor/ckeditor5-engine/src/dev-utils/model.js';
-import WidgetToolbarRepository from '@ckeditor/ckeditor5-widget/src/widgettoolbarrepository.js';
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
-import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
+import { ClassicEditor as ClassicTestEditor } from '@ckeditor/ckeditor5-editor-classic';
+import { Essentials } from '@ckeditor/ckeditor5-essentials';
+import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+import { WidgetToolbarRepository } from '@ckeditor/ckeditor5-widget';
+import { _setModelData as setData } from '@ckeditor/ckeditor5-engine';
 
 import Mermaid from '../src/mermaid.js';
 
