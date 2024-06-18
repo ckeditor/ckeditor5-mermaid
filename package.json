@@ -39,7 +39,7 @@
     "@ckeditor/ckeditor5-package-tools": "^2.0.0-alpha.0",
     "ckeditor5": "nightly",
     "eslint": "^7.32.0",
-    "eslint-config-ckeditor5": ">=3.1.1",
+    "eslint-config-ckeditor5": "^6.0.0",
     "http-server": "^14.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
