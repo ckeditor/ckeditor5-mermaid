@@ -36,7 +36,7 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-build-tools": "^40.2.0",
     "@ckeditor/ckeditor5-inspector": "^4.0.0",
-    "@ckeditor/ckeditor5-package-tools": "^2.0.0-alpha.0",
+    "@ckeditor/ckeditor5-package-tools": "^2.0.0",
     "ckeditor5": "latest",
     "eslint": "^7.32.0",
     "eslint-config-ckeditor5": "^6.0.0",
@@ -51,7 +51,7 @@
   },
   "scripts": {
     "dll:build": "ckeditor5-package-tools dll:build",
-    "dll:serve": "http-server ./ -o sample/dll.html",
+    "dll:serve": "http-server ./ -o sample/index.html",
     "build:dist": "node ./scripts/build-dist.mjs",
     "lint": "eslint \"**/*.js\" --quiet --ignore-pattern \"build/\"",
     "start": "ckeditor5-package-tools start",
