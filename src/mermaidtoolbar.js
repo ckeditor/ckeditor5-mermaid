@@ -2,8 +2,8 @@
  * @module mermaid/mermaidtoolbar
  */
 
-import { Plugin } from 'ckeditor5/src/core';
-import { WidgetToolbarRepository } from 'ckeditor5/src/widget';
+import { Plugin } from 'ckeditor5/src/core.js';
+import { WidgetToolbarRepository } from 'ckeditor5/src/widget.js';
 
 export default class MermaidToolbar extends Plugin {
 	/**

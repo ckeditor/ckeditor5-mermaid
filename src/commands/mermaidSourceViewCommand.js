@@ -2,9 +2,9 @@
  * @module mermaid/mermaidsourceviewcommand
  */
 
-import { Command } from 'ckeditor5/src/core';
+import { Command } from 'ckeditor5/src/core.js';
 
-import { checkIsOn } from '../utils';
+import { checkIsOn } from '../utils.js';
 
 /**
  * The mermaid source view command.

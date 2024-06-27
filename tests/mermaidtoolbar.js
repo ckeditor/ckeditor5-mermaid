@@ -1,12 +1,10 @@
-import ClassicTestEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import {
-	setData
-} from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
-import WidgetToolbarRepository from '@ckeditor/ckeditor5-widget/src/widgettoolbarrepository';
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+import { ClassicEditor as ClassicTestEditor } from '@ckeditor/ckeditor5-editor-classic';
+import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+import { WidgetToolbarRepository } from '@ckeditor/ckeditor5-widget';
+import { _setModelData as setData } from '@ckeditor/ckeditor5-engine';
 
-import Mermaid from '../src/mermaid';
+import Mermaid from '../src/mermaid.js';
 
 /* global document */
 
@@ -38,6 +36,10 @@ describe( 'MermaidToolbar', () => {
 
 	describe( 'toolbar', () => {
 		it( 'should be initialized with expected buttons', () => {
+			editor.ui.focusTracker.isFocused = true;
+
+			setData( model, '<mermaid displayMode="split" source="">[]</mermaid>' );
+
 			expect( toolbar.items ).to.have.length( 5 );
 			expect( toolbar.items.get( 0 ).label ).to.equal( 'Source view' );
 			expect( toolbar.items.get( 1 ).label ).to.equal( 'Split view' );

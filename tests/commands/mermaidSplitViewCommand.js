@@ -1,9 +1,12 @@
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import { getData as getModelData, setData as setModelData } from '@ckeditor/ckeditor5-engine/src/dev-utils/model';
+import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+import {
+	_setModelData as setModelData,
+	_getModelData as getModelData
+} from '@ckeditor/ckeditor5-engine';
 
-import MermaidSplitViewCommand from '../../src/commands/mermaidSplitViewCommand';
-import MermaidEditing from '../../src/mermaidediting';
+import MermaidSplitViewCommand from '../../src/commands/mermaidSplitViewCommand.js';
+import MermaidEditing from '../../src/mermaidediting.js';
 
 /* global document */
 
