@@ -1,0 +1,43 @@
+.ck-mermaid__wrapper {
+display: flex;
+justify-content: center;
+}
+.ck-mermaid__wrapper .ck-mermaid__editing-view {
+padding: 16px;
+background-color: hsla(0, 0%, 78%, 0.3);
+min-height: 200px;
+border: 0;
+resize: vertical;
+font-size: 12px;
+outline: 0;
+}
+.ck-mermaid__preview {
+display: flex;
+justify-content: center;
+}
+[id^="dmermaid-"] {
+display: flex;
+align-items: center;
+height: 100%;
+justify-content: center;
+}
+[id^="dmermaid-"] svg {
+display: block;
+width: 60%;
+height: auto;
+}
+.ck-mermaid__source-mode .ck-mermaid__editing-view {
+width: 100%;
+}
+.ck-mermaid__source-mode .ck-mermaid__preview {
+display: none;
+}
+.ck-mermaid__split-mode .ck-mermaid__editing-view {
+width: 50%;
+}
+.ck-mermaid__split-mode .ck-mermaid__preview {
+width: 50%;
+}
+.ck-mermaid__preview-mode .ck-mermaid__editing-view {
+display: none;
+}
