@@ -34,7 +34,7 @@
     "lodash-es": "^4.17.15"
   },
   "devDependencies": {
-    "@ckeditor/ckeditor5-dev-build-tools": "^40.2.0",
+    "@ckeditor/ckeditor5-dev-build-tools": "^42.0.0",
     "@ckeditor/ckeditor5-inspector": "^4.0.0",
     "@ckeditor/ckeditor5-package-tools": "^2.0.0",
     "ckeditor5": "latest",
@@ -47,7 +47,7 @@
     "stylelint-config-ckeditor5": ">=2.0.1"
   },
   "peerDependencies": {
-    "ckeditor5": ">=42.0.0 || ^0.0.0-nightly"
+    "ckeditor5": ">=43.0.0 || ^0.0.0-nightly"
   },
   "scripts": {
     "dll:build": "ckeditor5-package-tools dll:build",
