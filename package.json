@@ -1,6 +1,6 @@
 {
   "name": "@ckeditor/ckeditor5-mermaid",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mermaid widget for CKEditor 5.",
   "private": true,
   "keywords": [
