@@ -6,8 +6,6 @@ import { _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
 
 import Mermaid from '../src/mermaid.js';
 
-/* global document */
-
 describe( 'Mermaid', () => {
 	it( 'should be named', () => {
 		expect( Mermaid.pluginName ).to.equal( 'Mermaid' );

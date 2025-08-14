@@ -183,7 +183,7 @@ B --> C`;
 
 // Time in milliseconds.
 const DEBOUNCE_TIME = 300;
-/* global window */ class MermaidEditing extends Plugin {
+class MermaidEditing extends Plugin {
     /**
 	 * @inheritDoc
 	 */ static get pluginName() {
@@ -455,7 +455,7 @@ function getSelectedElement(selection) {
     return null;
 }
 
-/* global window, document */ class MermaidUI extends Plugin {
+class MermaidUI extends Plugin {
     /**
 	 * @inheritDoc
 	 */ static get pluginName() {

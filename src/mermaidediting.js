@@ -17,8 +17,6 @@ import InsertMermaidCommand from './commands/insertMermaidCommand.js';
 // Time in milliseconds.
 const DEBOUNCE_TIME = 300;
 
-/* global window */
-
 export default class MermaidEditing extends Plugin {
 	/**
 	 * @inheritDoc

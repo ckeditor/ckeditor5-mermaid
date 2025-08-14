@@ -6,8 +6,6 @@ import { _setModelData as setData } from '@ckeditor/ckeditor5-engine';
 
 import Mermaid from '../src/mermaid.js';
 
-/* global document */
-
 describe( 'MermaidToolbar', () => {
 	let editor, domElement, widgetToolbarRepository, balloon, toolbar, model;
 

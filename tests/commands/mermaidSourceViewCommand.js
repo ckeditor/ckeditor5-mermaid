@@ -8,8 +8,6 @@ import {
 import MermaidSourceViewCommand from '../../src/commands/mermaidSourceViewCommand.js';
 import MermaidEditing from '../../src/mermaidediting.js';
 
-/* global document */
-
 describe( 'MermaidSourceViewCommand', () => {
 	let domElement, editor, model, command;
 

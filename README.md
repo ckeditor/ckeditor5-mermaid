@@ -12,7 +12,7 @@ You can test all of the features of the `ckeditor5-mermaid` plugin with the manu
 After installing dependencies it's enough to execute the following script at the root of your local clone of the project:
 
 ```
-yarn start
+pnpm start
 ```
 
 ## License
