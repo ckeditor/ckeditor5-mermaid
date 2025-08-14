@@ -56,8 +56,8 @@
     "start": "ckeditor5-package-tools start",
     "stylelint": "stylelint --quiet --allow-empty-input 'theme/*.css'",
     "test": "ckeditor5-package-tools test",
-    "prepare": "yarn run dll:build && yarn run build:dist",
-    "prepublishOnly": "yarn run dll:build",
+    "prepare": "pnpm run dll:build && pnpm run build:dist",
+    "prepublishOnly": "pnpm run dll:build",
     "translations:collect": "ckeditor5-package-tools translations:collect",
     "translations:download": "ckeditor5-package-tools translations:download",
     "translations:upload": "ckeditor5-package-tools translations:upload"
