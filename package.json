@@ -25,6 +25,7 @@
     "dist",
     "lang",
     "src",
+    "scripts",
     "theme",
     "build",
     "ckeditor5-metadata.json"
