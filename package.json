@@ -18,8 +18,7 @@
   "homepage": "https://github.com/ckeditor/ckeditor5-mermaid",
   "bugs": "https://github.com/ckeditor/ckeditor5-mermaid/issues",
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=5.7.1"
+    "node": ">=18.0.0"
   },
   "files": [
     "dist",
