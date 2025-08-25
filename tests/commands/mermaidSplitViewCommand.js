@@ -19,7 +19,8 @@ describe( 'MermaidSplitViewCommand', () => {
 			plugins: [
 				MermaidEditing,
 				Paragraph
-			]
+			],
+			licenseKey: 'GPL'
 		} );
 
 		model = editor.model;

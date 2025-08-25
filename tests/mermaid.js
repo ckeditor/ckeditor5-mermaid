@@ -27,7 +27,8 @@ describe( 'Mermaid', () => {
 				],
 				toolbar: [
 					'mermaid'
-				]
+				],
+				licenseKey: 'GPL'
 			} );
 
 			setModelData( editor.model, '<paragraph>[]</paragraph>' );

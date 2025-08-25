@@ -19,7 +19,8 @@ describe( 'MermaidSourceViewCommand', () => {
 			plugins: [
 				MermaidEditing,
 				Paragraph
-			]
+			],
+			licenseKey: 'GPL'
 		} );
 
 		model = editor.model;

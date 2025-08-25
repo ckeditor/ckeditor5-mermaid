@@ -15,6 +15,7 @@ describe( 'MermaidToolbar', () => {
 
 		return ClassicTestEditor.create( domElement, {
 			plugins: [ Essentials, Paragraph, Mermaid ],
+			licenseKey: 'GPL',
 			mermaid: {
 				toolbar: [ 'fake_button' ]
 			}

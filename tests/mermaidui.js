@@ -19,7 +19,8 @@ describe( 'MermaidUI', () => {
 			editor = await ClassicEditor.create( domElement, {
 				plugins: [
 					Mermaid
-				]
+				],
+				licenseKey: 'GPL'
 			} );
 		} );
 

@@ -3,3 +3,8 @@ onlyBuiltDependencies:
   - core-js
   - esbuild
   - husky
+
+shellEmulator: true
+shamefullyHoist: true
+preferFrozenLockfile: true
+verifyDepsBeforeRun: install

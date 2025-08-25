@@ -29,7 +29,8 @@ describe( 'MermaidEditing', () => {
 					Essentials,
 					CodeBlockEditing,
 					MermaidEditing
-				]
+				],
+				licenseKey: 'GPL'
 			} );
 
 			model = editor.model;

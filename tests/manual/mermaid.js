@@ -29,6 +29,7 @@ ClassicEditor
 			CodeBlock,
 			Mermaid
 		],
+		licenseKey: 'GPL',
 		toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'codeBlock', 'mermaid' ],
 		codeBlock: {
 			languages: [
