@@ -192,10 +192,19 @@ export default class MermaidEditing extends Plugin {
 
 			domElement.innerHTML = mermaidSource;
 
-			window.setTimeout( () => {
-				// @todo: by the looks of it the domElement needs to be hooked to tree in order to allow for rendering.
+			// Rendering mermaid diagram won't be successful if the domElement is invisible.
+			// Instead of rendering it right away (or with a fixed timeout), let's postpone rendering until the domElement is visible.
+			// https://github.com/ckeditor/github-writer/issues/379
+			if ( !domElement.getBoundingClientRect().height ) {
+				const resizeObserver = new window.ResizeObserver( () => {
+					that._renderMermaid( domElement );
+					resizeObserver.unobserve( domElement );
+				} );
+
+				resizeObserver.observe( domElement );
+			} else {
 				that._renderMermaid( domElement );
-			}, 100 );
+			}
 
 			return domElement;
 		}
