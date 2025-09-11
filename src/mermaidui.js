@@ -11,8 +11,6 @@ import splitModeIcon from '../theme/icons/split-mode.svg';
 import sourceModeIcon from '../theme/icons/source-mode.svg';
 import infoIcon from '../theme/icons/info.svg';
 
-/* global window, document */
-
 export default class MermaidUI extends Plugin {
 	/**
 	 * @inheritDoc

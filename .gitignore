@@ -1,7 +1,6 @@
 .nyc_output/
 coverage/
 node_modules/
-yarn.lock
+pnpm-lock.yaml
 tmp/
 build/
-yarn.error

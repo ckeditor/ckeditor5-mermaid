@@ -5,8 +5,6 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-env node */
-
 import { createRequire } from 'module';
 import upath from 'upath';
 import chalk from 'chalk';

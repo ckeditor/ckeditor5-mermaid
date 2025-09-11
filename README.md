@@ -9,10 +9,11 @@ This package contains a Mermaid feature for CKEditor 5.
 
 You can test all of the features of the `ckeditor5-mermaid` plugin with the manual test sample.
 
-After installing dependencies it's enough to execute the following script at the root of your local clone of the project:
+After installing dependencies it's enough to execute the following scripts at the root of your local clone of the project:
 
 ```
-yarn start
+pnpm run build
+pnpm run start
 ```
 
 ## License

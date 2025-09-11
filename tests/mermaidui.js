@@ -4,8 +4,6 @@ import { _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
 import Mermaid from '../src/mermaid.js';
 import MermaidUI from '../src/mermaidui.js';
 
-/* global document */
-
 describe( 'MermaidUI', () => {
 	it( 'should be named', () => {
 		expect( MermaidUI.pluginName ).to.equal( 'MermaidUI' );
@@ -21,7 +19,8 @@ describe( 'MermaidUI', () => {
 			editor = await ClassicEditor.create( domElement, {
 				plugins: [
 					Mermaid
-				]
+				],
+				licenseKey: 'GPL'
 			} );
 		} );
 

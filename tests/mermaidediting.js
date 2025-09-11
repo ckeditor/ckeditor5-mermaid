@@ -10,8 +10,6 @@ import {
 } from '@ckeditor/ckeditor5-engine';
 import MermaidEditing from '../src/mermaidediting.js';
 
-/* global document */
-
 describe( 'MermaidEditing', () => {
 	it( 'should be named', () => {
 		expect( MermaidEditing.pluginName ).to.equal( 'MermaidEditing' );
@@ -31,7 +29,8 @@ describe( 'MermaidEditing', () => {
 					Essentials,
 					CodeBlockEditing,
 					MermaidEditing
-				]
+				],
+				licenseKey: 'GPL'
 			} );
 
 			model = editor.model;

@@ -8,8 +8,6 @@ import {
 import MermaidSplitViewCommand from '../../src/commands/mermaidSplitViewCommand.js';
 import MermaidEditing from '../../src/mermaidediting.js';
 
-/* global document */
-
 describe( 'MermaidSplitViewCommand', () => {
 	let domElement, editor, model, command;
 
@@ -21,7 +19,8 @@ describe( 'MermaidSplitViewCommand', () => {
 			plugins: [
 				MermaidEditing,
 				Paragraph
-			]
+			],
+			licenseKey: 'GPL'
 		} );
 
 		model = editor.model;

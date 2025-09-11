@@ -3,8 +3,6 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-/* globals console, window, document */
-
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { Typing } from '@ckeditor/ckeditor5-typing';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
@@ -31,6 +29,7 @@ ClassicEditor
 			CodeBlock,
 			Mermaid
 		],
+		licenseKey: 'GPL',
 		toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'codeBlock', 'mermaid' ],
 		codeBlock: {
 			languages: [

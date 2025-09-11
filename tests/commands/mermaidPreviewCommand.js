@@ -8,8 +8,6 @@ import {
 import MermaidPreviewCommand from '../../src/commands/mermaidPreviewCommand.js';
 import MermaidEditing from '../../src/mermaidediting.js';
 
-/* global document */
-
 describe( 'MermaidPreviewCommand', () => {
 	let domElement, editor, model, command;
 
@@ -21,7 +19,8 @@ describe( 'MermaidPreviewCommand', () => {
 			plugins: [
 				MermaidEditing,
 				Paragraph
-			]
+			],
+			licenseKey: 'GPL'
 		} );
 
 		model = editor.model;
