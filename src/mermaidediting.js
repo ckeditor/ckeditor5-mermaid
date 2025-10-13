@@ -4,8 +4,9 @@
 
 import { Plugin } from 'ckeditor5/src/core.js';
 import { toWidget } from 'ckeditor5/src/widget.js';
+import { global } from 'ckeditor5/src/utils.js';
 
-import mermaid from 'mermaid/dist/mermaid.js';
+import mermaid from 'mermaid';
 
 import { debounce } from 'lodash-es';
 
@@ -37,6 +38,10 @@ export default class MermaidEditing extends Plugin {
 	 * @inheritDoc
 	 */
 	afterInit() {
+		mermaid.initialize( {
+			startOnLoad: false
+		} );
+
 		this.editor.model.schema.register( 'mermaid', {
 			allowAttributes: [ 'displayMode', 'source' ],
 			allowWhere: '$block',
@@ -186,16 +191,10 @@ export default class MermaidEditing extends Plugin {
 		}
 
 		function createMermaidPreview( domDocument ) {
-			// Taking the text from the wrapper container element for now
 			const mermaidSource = data.item.getAttribute( 'source' );
 			const domElement = this.toDomElement( domDocument );
 
-			domElement.innerHTML = mermaidSource;
-
-			window.setTimeout( () => {
-				// @todo: by the looks of it the domElement needs to be hooked to tree in order to allow for rendering.
-				that._renderMermaid( domElement );
-			}, 100 );
+			that._renderMermaid( domElement, mermaidSource );
 
 			return domElement;
 		}
@@ -228,10 +227,7 @@ export default class MermaidEditing extends Plugin {
 					const domPreviewWrapper = domConverter.viewToDom( child, window.document );
 
 					if ( domPreviewWrapper ) {
-						domPreviewWrapper.innerHTML = newSource;
-						domPreviewWrapper.removeAttribute( 'data-processed' );
-
-						this._renderMermaid( domPreviewWrapper );
+						this._renderMermaid( domPreviewWrapper, newSource );
 					}
 				}
 			}
@@ -279,12 +275,24 @@ export default class MermaidEditing extends Plugin {
 	}
 
 	/**
-	 * Renders Mermaid in a given `domElement`. Expect this domElement to have mermaid
-	 * source set as text content.
+	 * Renders Mermaid (a parsed `source`) in a given `domElement`.
 	 *
 	 * @param {HTMLElement} domElement
+	 * @param {String} source
+	 * @returns {Promise}
 	 */
-	_renderMermaid( domElement ) {
-		mermaid.init( undefined, domElement );
+	_renderMermaid( domElement, source ) {
+		const id = `ck-mermaid-${ global.window.crypto.randomUUID() }`;
+
+		return mermaid
+			.render( id, source )
+			.then( ( { svg } ) => {
+				domElement.innerHTML = svg;
+			} )
+			// An empty `catch()` to prevent from crashing the entire page.
+			.catch( err => {
+				domElement.innerText = err.message;
+				global.document.getElementById( id ).parentNode.remove();
+			} );
 	}
 }

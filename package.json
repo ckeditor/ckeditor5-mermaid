@@ -32,12 +32,12 @@
   ],
   "dependencies": {
     "lodash-es": "^4.17.15",
-    "mermaid": "^9.1.4"
+    "mermaid": "^11.0.0"
   },
   "devDependencies": {
-    "@ckeditor/ckeditor5-dev-build-tools": "^51.0.0",
-    "@ckeditor/ckeditor5-inspector": "^4.0.0",
-    "@ckeditor/ckeditor5-package-tools": "^2.1.0",
+    "@ckeditor/ckeditor5-dev-build-tools": "^53.0.0",
+    "@ckeditor/ckeditor5-inspector": "^5.0.0",
+    "@ckeditor/ckeditor5-package-tools": "^4.1.0",
     "ckeditor5": "latest",
     "eslint": "^9.26.0",
     "eslint-config-ckeditor5": "^12.1.0",
