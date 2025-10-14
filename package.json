@@ -38,6 +38,9 @@
     "@ckeditor/ckeditor5-dev-build-tools": "^53.0.0",
     "@ckeditor/ckeditor5-inspector": "^5.0.0",
     "@ckeditor/ckeditor5-package-tools": "^4.1.1",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/browser-webdriverio": "4.0.0-beta.15",
+    "@vitest/coverage-istanbul": "^3.2.4",
     "ckeditor5": "latest",
     "eslint": "^9.26.0",
     "eslint-config-ckeditor5": "^12.1.0",
@@ -47,7 +50,10 @@
     "husky": "^9.1.7",
     "lint-staged": "^12.0.0",
     "stylelint": "^16.0.0",
-    "stylelint-config-ckeditor5": "^12.1.0"
+    "stylelint-config-ckeditor5": "^12.1.0",
+    "vite-plugin-svgo": "~1.4.0",
+    "vitest": "^3.2.4",
+    "webdriverio": "^9.20.0"
   },
   "peerDependencies": {
     "ckeditor5": ">=43.0.0 || ^0.0.0-nightly"
@@ -59,12 +65,9 @@
     "lint": "eslint",
     "start": "ckeditor5-package-tools start",
     "stylelint": "stylelint --quiet --allow-empty-input 'theme/*.css'",
-    "test": "ckeditor5-package-tools test",
+    "test": "vitest",
     "build": "pnpm run dll:build && pnpm run build:dist",
     "prepublishOnly": "pnpm run build",
-    "translations:collect": "ckeditor5-package-tools translations:collect",
-    "translations:download": "ckeditor5-package-tools translations:download",
-    "translations:upload": "ckeditor5-package-tools translations:upload",
     "postinstall": "node ./scripts/postinstall.mjs"
   },
   "lint-staged": {

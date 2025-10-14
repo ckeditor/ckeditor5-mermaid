@@ -1,3 +1,4 @@
+import { afterEach, beforeEach, describe, it } from 'vitest';
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
 
