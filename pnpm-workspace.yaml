@@ -1,5 +1,7 @@
 ignoredBuiltDependencies:
   - chromedriver
+  - edgedriver
+  - geckodriver
 
 onlyBuiltDependencies:
   - '@swc/core'
