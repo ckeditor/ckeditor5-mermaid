@@ -4,7 +4,7 @@
 
 import { Plugin } from 'ckeditor5/src/core.js';
 import { toWidget } from 'ckeditor5/src/widget.js';
-import { global } from 'ckeditor5/src/utils.js';
+import { global, uid } from 'ckeditor5/src/utils.js';
 
 import mermaid from 'mermaid';
 
@@ -282,10 +282,9 @@ export default class MermaidEditing extends Plugin {
 	 * @returns {Promise}
 	 */
 	_renderMermaid( domElement, source ) {
-		const id = `ck-mermaid-${ global.window.crypto.randomUUID() }`;
+		const id = `ck-mermaid-${ uid() }`;
 
-		return mermaid
-			.render( id, source )
+		return mermaid.render( id, source )
 			.then( ( { svg } ) => {
 				domElement.innerHTML = svg;
 			} )

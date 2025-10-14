@@ -1,10 +1,13 @@
+ignoredBuiltDependencies:
+  - chromedriver
+
 onlyBuiltDependencies:
   - '@swc/core'
   - core-js
   - esbuild
   - husky
 
-shellEmulator: true
-shamefullyHoist: true
 preferFrozenLockfile: true
+shamefullyHoist: true
+shellEmulator: true
 verifyDepsBeforeRun: install
