@@ -1,13 +1,10 @@
+import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { CodeBlockEditing } from '@ckeditor/ckeditor5-code-block';
-import {
-	_setModelData as setModelData,
-	_getModelData as getModelData,
-	_getViewData as getViewData
-} from '@ckeditor/ckeditor5-engine';
+import { _getModelData as getModelData, _getViewData as getViewData, _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
 import MermaidEditing from '../src/mermaidediting.js';
 
 describe( 'MermaidEditing', () => {
@@ -23,13 +20,7 @@ describe( 'MermaidEditing', () => {
 			document.body.appendChild( domElement );
 
 			editor = await ClassicEditor.create( domElement, {
-				plugins: [
-					Paragraph,
-					Heading,
-					Essentials,
-					CodeBlockEditing,
-					MermaidEditing
-				],
+				plugins: [ Paragraph, Heading, Essentials, CodeBlockEditing, MermaidEditing ],
 				licenseKey: 'GPL'
 			} );
 
@@ -46,20 +37,19 @@ describe( 'MermaidEditing', () => {
 				it( 'works correctly', () => {
 					editor.setData(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
+						'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
 						'</pre>'
 					);
 
 					expect( getModelData( model, { withoutSelection: true } ) ).to.equal(
-						'<mermaid displayMode="split" source="flowchart TB\nA --> B\nB --> C">' +
-						'</mermaid>'
+						'<mermaid displayMode="split" source="flowchart TB\nA --> B\nB --> C"></mermaid>'
 					);
 				} );
 
 				it( 'works correctly when empty', () => {
 					editor.setData(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid"></code>' +
+						'<code class="language-mermaid"></code>' +
 						'</pre>'
 					);
 
@@ -71,31 +61,29 @@ describe( 'MermaidEditing', () => {
 
 			describe( 'data downcast', () => {
 				it( 'works correctly', () => {
-					// Using editor.setData() instead of setModelData helper because of #11365.
 					editor.setData(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
+						'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
 						'</pre>'
 					);
 
 					expect( editor.getData() ).to.equal(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid">flowchart TB\nA --&gt; B\nB --&gt; C</code>' +
+						'<code class="language-mermaid">flowchart TB\nA --&gt; B\nB --&gt; C</code>' +
 						'</pre>'
 					);
 				} );
 
-				it( 'works correctly when empty ', () => {
-					// Using editor.setData() instead of setModelData helper because of #11365.
+				it( 'works correctly when empty', () => {
 					editor.setData(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid"></code>' +
+						'<code class="language-mermaid"></code>' +
 						'</pre>'
 					);
 
 					expect( editor.getData() ).to.equal(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid"></code>' +
+						'<code class="language-mermaid"></code>' +
 						'</pre>'
 					);
 				} );
@@ -103,56 +91,50 @@ describe( 'MermaidEditing', () => {
 
 			describe( 'editing downcast', () => {
 				it( 'works correctly without displayMode attribute', () => {
-					// Using editor.setData() instead of setModelData helper because of #11365.
 					editor.setData(
 						'<pre spellcheck="false">' +
-							'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
+						'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
 						'</pre>'
 					);
 
 					expect( getViewData( editor.editing.view, { withoutSelection: true } ) ).to.equal(
 						'<div class="ck-mermaid__split-mode ck-mermaid__wrapper ck-widget ck-widget_selected' +
-							' ck-widget_with-selection-handle" contenteditable="false">' +
-							'<div class="ck ck-widget__selection-handle"></div>' +
-							// New lines replaced with space, same issue in getViewData as in #11365.
-							'<textarea class="ck-mermaid__editing-view" data-cke-ignore-events="true"' +
-								' placeholder="Insert mermaid source code"></textarea>' +
-							'<div class="ck-mermaid__preview"></div>' +
-							'<div class="ck ck-reset_all ck-widget__type-around"></div>' +
+						' ck-widget_with-selection-handle" contenteditable="false">' +
+						'<div class="ck ck-widget__selection-handle"></div>' +
+						'<textarea class="ck-mermaid__editing-view" data-cke-ignore-events="true"' +
+						' placeholder="Insert mermaid source code"></textarea>' +
+						'<div class="ck-mermaid__preview"></div>' +
+						'<div class="ck ck-reset_all ck-widget__type-around"></div>' +
 						'</div>'
 					);
 				} );
 
 				it( 'works correctly with displayMode attribute', () => {
-					setModelData( editor.model,
-						'<mermaid source="foo" displayMode="preview"></mermaid>'
-					);
+					setModelData( editor.model, '<mermaid source="foo" displayMode="preview"></mermaid>' );
 
 					expect( getViewData( editor.editing.view, { withoutSelection: true } ) ).to.equal(
 						'<div class="ck-mermaid__preview-mode ck-mermaid__wrapper ck-widget ck-widget_selected ' +
-							'ck-widget_with-selection-handle" contenteditable="false">' +
-							'<div class="ck ck-widget__selection-handle"></div>' +
-							'<textarea class="ck-mermaid__editing-view" data-cke-ignore-events="true"' +
-								' placeholder="Insert mermaid source code"></textarea>' +
-							'<div class="ck-mermaid__preview"></div>' +
-							'<div class="ck ck-reset_all ck-widget__type-around"></div>' +
+						'ck-widget_with-selection-handle" contenteditable="false">' +
+						'<div class="ck ck-widget__selection-handle"></div>' +
+						'<textarea class="ck-mermaid__editing-view" data-cke-ignore-events="true"' +
+						' placeholder="Insert mermaid source code"></textarea>' +
+						'<div class="ck-mermaid__preview"></div>' +
+						'<div class="ck ck-reset_all ck-widget__type-around"></div>' +
 						'</div>'
 					);
 				} );
 
 				it( 'works correctly with empty source', () => {
-					setModelData( editor.model,
-						'<mermaid source="" displayMode="preview"></mermaid>'
-					);
+					setModelData( editor.model, '<mermaid source="" displayMode="preview"></mermaid>' );
 
 					expect( getViewData( editor.editing.view, { withoutSelection: true } ) ).to.equal(
 						'<div class="ck-mermaid__preview-mode ck-mermaid__wrapper ck-widget ck-widget_selected ' +
-							'ck-widget_with-selection-handle" contenteditable="false">' +
-							'<div class="ck ck-widget__selection-handle"></div>' +
-							'<textarea class="ck-mermaid__editing-view" data-cke-ignore-events="true"' +
-								' placeholder="Insert mermaid source code"></textarea>' +
-							'<div class="ck-mermaid__preview"></div>' +
-							'<div class="ck ck-reset_all ck-widget__type-around"></div>' +
+						'ck-widget_with-selection-handle" contenteditable="false">' +
+						'<div class="ck ck-widget__selection-handle"></div>' +
+						'<textarea class="ck-mermaid__editing-view" data-cke-ignore-events="true"' +
+						' placeholder="Insert mermaid source code"></textarea>' +
+						'<div class="ck-mermaid__preview"></div>' +
+						'<div class="ck ck-reset_all ck-widget__type-around"></div>' +
 						'</div>'
 					);
 				} );
@@ -161,7 +143,6 @@ describe( 'MermaidEditing', () => {
 					let domTextarea = null;
 
 					beforeEach( () => {
-						// Using editor.setData() instead of setModelData helper because of #11365.
 						editor.setData(
 							'<pre spellcheck="false">' +
 							'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
@@ -178,7 +159,6 @@ describe( 'MermaidEditing', () => {
 
 					it( 'is properly updated after model\'s attribute change', () => {
 						const { model } = editor;
-
 						const mermaidModel = model.document.getRoot().getChild( 0 );
 
 						model.change( writer => {
@@ -190,7 +170,6 @@ describe( 'MermaidEditing', () => {
 
 					it( 'doesn\'t loop if model attribute changes to the same value', () => {
 						const { model } = editor;
-
 						const mermaidModel = model.document.getRoot().getChild( 0 );
 
 						model.change( writer => {
@@ -205,7 +184,6 @@ describe( 'MermaidEditing', () => {
 					let domPreviewContainer, renderMermaidStub;
 
 					beforeEach( () => {
-						// Using editor.setData() instead of setModelData helper because of #11365.
 						editor.setData(
 							'<pre spellcheck="false">' +
 							'<code class="language-mermaid">flowchart TB\nA --> B\nB --> C</code>' +
@@ -215,40 +193,25 @@ describe( 'MermaidEditing', () => {
 						const previewContainerView = editor.editing.view.document.getRoot().getChild( 0 ).getChild( 2 );
 						domPreviewContainer = editor.editing.view.domConverter.viewToDom( previewContainerView );
 
-						renderMermaidStub = sinon.stub( editor.plugins.get( 'MermaidEditing' ), '_renderMermaid' );
+						const plugin = editor.plugins.get( 'MermaidEditing' );
+						renderMermaidStub = vi.spyOn( plugin, '_renderMermaid' ).mockImplementation( () => {
+						} );
 					} );
 
 					afterEach( () => {
-						renderMermaidStub.restore();
-					} );
-
-					it( 'has proper inner text set during the initial conversion', () => {
-						expect( domPreviewContainer.textContent ).to.equal( 'flowchart TB\nA --> B\nB --> C' );
-					} );
-
-					it( 'has proper inner text set after a model\'s attribute change', () => {
-						const { model } = editor;
-
-						const mermaidModel = model.document.getRoot().getChild( 0 );
-
-						model.change( writer => {
-							writer.setAttribute( 'source', 'abc', mermaidModel );
-						} );
-
-						expect( domPreviewContainer.textContent ).to.equal( 'abc' );
+						renderMermaidStub.mockRestore();
 					} );
 
 					it( 'calls mermaid render function after a model\'s attribute change', () => {
 						const { model } = editor;
-
 						const mermaidModel = model.document.getRoot().getChild( 0 );
 
 						model.change( writer => {
 							writer.setAttribute( 'source', 'abc', mermaidModel );
 						} );
 
-						expect( renderMermaidStub.callCount ).to.equal( 1 );
-						sinon.assert.calledWithExactly( renderMermaidStub, domPreviewContainer );
+						expect( renderMermaidStub ).toHaveBeenCalledTimes( 1 );
+						expect( renderMermaidStub ).toHaveBeenCalledWith( domPreviewContainer, 'abc' );
 					} );
 				} );
 			} );
@@ -275,7 +238,9 @@ describe( 'MermaidEditing', () => {
 				setModelData( editor.model, '<mermaid source="foo"></mermaid>' );
 
 				const widgetChildren = [ ...editor.editing.view.document.getRoot().getChild( 0 ).getChildren() ];
-				const previewView = widgetChildren.filter( item => item.name === 'div' && item.hasClass( 'ck-mermaid__preview' ) );
+				const previewView = widgetChildren.filter(
+					item => item.name === 'div' && item.hasClass( 'ck-mermaid__preview' )
+				);
 
 				expect( previewView.length ).to.equal( 1 );
 			} );

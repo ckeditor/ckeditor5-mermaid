@@ -1,6 +1,7 @@
 import { Command, Plugin } from '@ckeditor/ckeditor5-core/dist/index.js';
 import { toWidget, WidgetToolbarRepository } from '@ckeditor/ckeditor5-widget/dist/index.js';
-import mermaid from 'mermaid/dist/mermaid.js';
+import { uid, global } from '@ckeditor/ckeditor5-utils/dist/index.js';
+import mermaid from 'mermaid';
 import { debounce } from 'lodash-es';
 import { ButtonView } from '@ckeditor/ckeditor5-ui/dist/index.js';
 
@@ -198,6 +199,9 @@ class MermaidEditing extends Plugin {
     /**
 	 * @inheritDoc
 	 */ afterInit() {
+        mermaid.initialize({
+            startOnLoad: false
+        });
         this.editor.model.schema.register('mermaid', {
             allowAttributes: [
                 'displayMode',
@@ -328,14 +332,9 @@ class MermaidEditing extends Plugin {
             return domElement;
         }
         function createMermaidPreview(domDocument) {
-            // Taking the text from the wrapper container element for now
             const mermaidSource = data.item.getAttribute('source');
             const domElement = this.toDomElement(domDocument);
-            domElement.innerHTML = mermaidSource;
-            window.setTimeout(()=>{
-                // @todo: by the looks of it the domElement needs to be hooked to tree in order to allow for rendering.
-                that._renderMermaid(domElement);
-            }, 100);
+            that._renderMermaid(domElement, mermaidSource);
             return domElement;
         }
     }
@@ -361,9 +360,7 @@ class MermaidEditing extends Plugin {
                     // @todo: we could optimize this and not refresh mermaid if widget is in source mode.
                     const domPreviewWrapper = domConverter.viewToDom(child, window.document);
                     if (domPreviewWrapper) {
-                        domPreviewWrapper.innerHTML = newSource;
-                        domPreviewWrapper.removeAttribute('data-processed');
-                        this._renderMermaid(domPreviewWrapper);
+                        this._renderMermaid(domPreviewWrapper, newSource);
                     }
                 }
             }
@@ -403,12 +400,20 @@ class MermaidEditing extends Plugin {
         conversionApi.updateConversionResult(mermaidElement, data);
     }
     /**
-	 * Renders Mermaid in a given `domElement`. Expect this domElement to have mermaid
-	 * source set as text content.
+	 * Renders Mermaid (a parsed `source`) in a given `domElement`.
 	 *
 	 * @param {HTMLElement} domElement
-	 */ _renderMermaid(domElement) {
-        mermaid.init(undefined, domElement);
+	 * @param {String} source
+	 * @returns {Promise}
+	 */ _renderMermaid(domElement, source) {
+        const id = `ck-mermaid-${uid()}`;
+        return mermaid.render(id, source).then(({ svg })=>{
+            domElement.innerHTML = svg;
+        })// An empty `catch()` to prevent from crashing the entire page.
+        .catch((err)=>{
+            domElement.innerText = err.message;
+            global.document.getElementById(id).parentNode.remove();
+        });
     }
 }
 

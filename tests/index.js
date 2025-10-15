@@ -1,4 +1,5 @@
-import { Mermaid as MermaidDll, icons } from '../src/index.js';
+import { describe, it } from 'vitest';
+import { icons, Mermaid as MermaidDll } from '../src/index.js';
 import Mermaid from '../src/mermaid.js';
 
 import infoIcon from './../theme/icons/info.svg';
