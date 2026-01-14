@@ -1,7 +1,5 @@
 import { afterEach, beforeEach, describe, it } from 'vitest';
-import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { _getModelData as getModelData, _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
+import { ClassicEditor, Paragraph, _getModelData as getModelData, _setModelData as setModelData } from 'ckeditor5';
 
 import InsertMermaidCommand from '../../src/commands/insertMermaidCommand.js';
 import MermaidEditing from '../../src/mermaidediting.js';

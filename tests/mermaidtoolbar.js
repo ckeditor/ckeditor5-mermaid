@@ -1,9 +1,5 @@
 import { afterEach, beforeEach, describe, it } from 'vitest';
-import { ClassicEditor as ClassicTestEditor } from '@ckeditor/ckeditor5-editor-classic';
-import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { WidgetToolbarRepository } from '@ckeditor/ckeditor5-widget';
-import { _setModelData as setData } from '@ckeditor/ckeditor5-engine';
+import { ClassicEditor, Essentials, Paragraph, WidgetToolbarRepository, _setModelData as setData } from 'ckeditor5';
 
 import Mermaid from '../src/mermaid.js';
 
@@ -14,7 +10,7 @@ describe( 'MermaidToolbar', () => {
 		domElement = document.createElement( 'div' );
 		document.body.appendChild( domElement );
 
-		return ClassicTestEditor.create( domElement, {
+		return ClassicEditor.create( domElement, {
 			plugins: [ Essentials, Paragraph, Mermaid ],
 			licenseKey: 'GPL',
 			mermaid: {

@@ -1,10 +1,14 @@
 import { afterEach, beforeEach, describe, it, vi } from 'vitest';
-import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
-import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { Heading } from '@ckeditor/ckeditor5-heading';
-import { CodeBlockEditing } from '@ckeditor/ckeditor5-code-block';
-import { _getModelData as getModelData, _getViewData as getViewData, _setModelData as setModelData } from '@ckeditor/ckeditor5-engine';
+import {
+	ClassicEditor,
+	Essentials,
+	Paragraph,
+	Heading,
+	CodeBlockEditing,
+	_getModelData as getModelData,
+	_getViewData as getViewData,
+	_setModelData as setModelData
+} from 'ckeditor5';
 import MermaidEditing from '../src/mermaidediting.js';
 
 describe( 'MermaidEditing', () => {
