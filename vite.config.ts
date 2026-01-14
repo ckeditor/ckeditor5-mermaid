@@ -1,4 +1,4 @@
-import { resolve } from 'node:path';
+import { resolve, isAbsolute, extname } from 'node:path';
 import { defineConfig, mergeConfig, type ViteUserConfig } from 'vitest/config';
 import svg from 'vite-plugin-svgo';
 import { webdriverio } from '@vitest/browser-webdriverio';
@@ -14,6 +14,33 @@ import pkgJson from './package.json' with { type: 'json' };
  */
 export default defineConfig( ( { mode } ) => {
 	const entry = resolve( import.meta.dirname, 'src/index.ts' );
+
+	function externals( externalPackages: Record<string, string> ): ( id: string ) => boolean {
+		const externals = Object.keys( externalPackages );
+		const extensions = [ '.ts', '.mts', '.mjs', '.js', '.json', '.node' ];
+
+		return ( id: string ) => {
+			// Bundle relative and absolute imports.
+			if ( id.startsWith( '.' ) || isAbsolute( id ) ) {
+				return false;
+			}
+
+			// Don't bundle imports that exactly match the `external` list.
+			if ( externals.includes( id ) ) {
+				return true;
+			}
+
+			const packageName = id
+				.split( '/' )
+				.slice( 0, id.startsWith( '@' ) ? 2 : 1 )
+				.join( '/' );
+
+			const extension = extname( id );
+
+			// Don't bundle, unless the import has non-JS or non-TS file extension (for example `.css`).
+			return externals.includes( packageName ) && ( !extension || extensions.includes( extension ) );
+		};
+	}
 
 	/**
 	 * Configuration shared between all builds.
@@ -75,9 +102,9 @@ export default defineConfig( ( { mode } ) => {
 				fileName: ( format: string, name: string ) => name + '.js'
 			},
 			rollupOptions: {
-				external: Object.keys( {
-					...( pkgJson.dependencies || {} ),
-					...( pkgJson.peerDependencies || {} )
+				external: externals( {
+					...pkgJson.dependencies,
+					...pkgJson.peerDependencies
 				} )
 			}
 		}
@@ -88,7 +115,7 @@ export default defineConfig( ( { mode } ) => {
 	 */
 	const browserConfig: ViteUserConfig = {
 		build: {
-			minify: true,
+			minify: 'terser',
 			outDir: 'dist/browser',
 			lib: {
 				entry,
@@ -98,7 +125,7 @@ export default defineConfig( ( { mode } ) => {
 				fileName: ( format: string, name: string ) => name + '.' + format + '.js'
 			},
 			rollupOptions: {
-				external: Object.keys( pkgJson.peerDependencies || {} ),
+				external: externals( pkgJson.peerDependencies ),
 				output: {
 					inlineDynamicImports: true,
 					globals: {
