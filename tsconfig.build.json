@@ -7,8 +7,8 @@
     "declarationDir": "dist"
   },
   "include": [
-		"src"
-	],
+    "src"
+  ],
   "exclude": [
     "src/demos"
   ]
