@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://ckeditor.com/docs/ckeditor5/latest/assets/img/favicons/32x32.png"
+    sizes="32x32"
+  >
+  <title>CKEditor Mermaid example</title>
+
+  <style>
+    @import 'ckeditor5/ckeditor5.css';
+
+    body {
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    pre.markdown-output {
+			background: hsl(70, 7%, 16%);
+			color: hsl(0, 0%, 100%);
+			display: block;
+			font-size: 1em;
+			font-family: Monaco, Menlo, Consolas, "Roboto Mono", "Courier New", "Ubuntu Mono", monospace;
+			padding: 1.333em;
+      overflow: auto;
+		}
+
+		.markdown-container {
+			display:flex;
+      width: 100%;
+
+      .ck-editor {
+        width: 60%
+      }
+		}
+
+		.markdown-output-container {
+      width: 40%;
+			padding-left: 20px;
+		}
+  </style>
+
+</head>
+<body>
+  <h1>Development Sample</h1>
+  <div id="development-editor"></div>
+
+  <h1>Markdown Sample</h1>
+  <div class="markdown-container">
+		<textarea id="markdown-editor">
+Mermaid snippet:
+
+```mermaid
+flowchart TB
+A --> C
+A --> D
+B --> C
+B --> D
+```
+
+More complex case:
+
+```mermaid
+sequenceDiagram
+participant Alice
+participant Bob
+Alice->>John: Hello John, how are you?
+loop Healthcheck
+	John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts <br/>prevail!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!
+```
+
+Javascript snippet:
+
+```Javascript
+var foo = 'bar';
+
+alert( foo );
+```
+			</textarea>
+
+			<div class="markdown-output-container">
+				<p>Output:</p>
+
+				<pre class="markdown-output"><code id="markdown-output"></code></pre>
+			</div>
+	</div>
+
+  <h1>Mermaid sample</h1>
+
+  <div id="mermaid-editor">
+		<p>Mermaid snippet:</p>
+
+		<pre>
+			<code class="mermaid language-mermaid">
+flowchart TB
+A --> C
+A --> D
+B --> C
+B --> D
+			</code>
+		</pre>
+
+		<p>More complex case:</p>
+
+		<pre>
+			<code class="mermaid language-mermaid">
+sequenceDiagram
+participant Alice
+participant Bob
+Alice->>John: Hello John, how are you?
+loop Healthcheck
+	John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts <br/>prevail!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!
+			</code>
+		</pre>
+	</div>
+
+  <script type="module" src="./development.js"></script>
+  <script type="module" src="./mermaid.js"></script>
+  <script type="module" src="./markdown.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -13,18 +13,16 @@ import {
 	Link,
 	Bold,
 	Italic,
+	Markdown,
 	CodeBlock
 } from 'ckeditor5';
-import 'ckeditor5/ckeditor5.css';
 
-import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
-
-import { Mermaid } from '../index.js';
+import { Mermaid } from '../src/index.js';
 
 ClassicEditor
-	.create( document.querySelector( '#editor' ), {
-		licenseKey: 'GPL',
+	.create( document.querySelector( '#markdown-editor' ), {
 		plugins: [
+			Markdown,
 			Typing,
 			Paragraph,
 			Undo,
@@ -36,6 +34,7 @@ ClassicEditor
 			CodeBlock,
 			Mermaid
 		],
+		licenseKey: 'GPL',
 		toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'codeBlock', 'mermaid' ],
 		codeBlock: {
 			languages: [
@@ -49,9 +48,22 @@ ClassicEditor
 	} )
 	.then( editor => {
 		window.editor = editor;
-		CKEditorInspector.attach( editor );
-		window.console.log( 'CKEditor 5 is ready.', editor );
+
+		setupMarkdownOutputPreview( editor );
 	} )
 	.catch( err => {
 		console.error( err.stack );
 	} );
+
+function setupMarkdownOutputPreview( editor ) {
+	const outputElement = document.querySelector( '#markdown-output' );
+
+	editor.model.document.on( 'change', () => {
+		outputElement.innerText = editor.getData();
+	} );
+
+	// Set the initial data with delay so hightlight.js doesn't catch them.
+	window.setTimeout( () => {
+		outputElement.innerText = editor.getData();
+	}, 500 );
+}

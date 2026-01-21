@@ -46,6 +46,8 @@ export default defineConfig( ( { mode } ) => {
 	 * Configuration shared between all builds.
 	 */
 	const sharedConfig: ViteUserConfig = {
+		root: resolve( import.meta.dirname, 'sample' ),
+
 		plugins: [
 			svg()
 		],
@@ -59,6 +61,10 @@ export default defineConfig( ( { mode } ) => {
 		 * Vitest configuration.
 		 */
 		test: {
+			dir: resolve( import.meta.dirname ),
+			include: [
+				resolve( import.meta.dirname, 'tests/**/*.[jt]s' )
+			],
 			browser: {
 				enabled: true,
 				instances: [
@@ -68,9 +74,6 @@ export default defineConfig( ( { mode } ) => {
 				headless: true,
 				ui: false
 			},
-			include: [
-				'tests/**/*.[jt]s'
-			],
 			globals: true,
 			watch: false,
 			coverage: {
@@ -94,7 +97,7 @@ export default defineConfig( ( { mode } ) => {
 	const npmConfig: ViteUserConfig = {
 		build: {
 			minify: false,
-			outDir: 'dist',
+			outDir: resolve( import.meta.dirname, 'dist' ),
 			lib: {
 				entry,
 				formats: [ 'es' ],
@@ -116,7 +119,7 @@ export default defineConfig( ( { mode } ) => {
 	const browserConfig: ViteUserConfig = {
 		build: {
 			minify: 'terser',
-			outDir: 'dist/browser',
+			outDir: resolve( import.meta.dirname, 'dist/browser' ),
 			lib: {
 				entry,
 				name: '@ckeditor/ckeditor5-mermaid',

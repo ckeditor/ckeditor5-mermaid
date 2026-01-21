@@ -15,12 +15,11 @@ import {
 	Italic,
 	CodeBlock
 } from 'ckeditor5';
-import 'ckeditor5/ckeditor5.css';
 
-import { Mermaid } from '../index.js';
+import { Mermaid } from '../src/index.js';
 
 ClassicEditor
-	.create( document.querySelector( '#editor' ), {
+	.create( document.querySelector( '#mermaid-editor' ), {
 		plugins: [
 			Typing,
 			Paragraph,
