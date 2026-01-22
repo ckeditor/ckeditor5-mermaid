@@ -9,10 +9,9 @@
     "ckeditor 5",
     "ckeditor5-feature",
     "ckeditor5-plugin",
+    "ckeditor5-package-generator",
     "ckeditor5-mermaid"
   ],
-  "type": "module",
-  "main": "src/index.js",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "CKSource (https://cksource.com/)",
   "homepage": "https://github.com/ckeditor/ckeditor5-mermaid",
@@ -21,54 +20,62 @@
     "node": ">=22.0.0",
     "pnpm": ">=10.14.0"
   },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*",
+    "./browser/*": null,
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist",
-    "lang",
-    "src",
-    "scripts",
-    "theme",
-    "build",
     "ckeditor5-metadata.json"
   ],
   "dependencies": {
-    "lodash-es": "^4.17.15",
-    "mermaid": "^11.0.0"
-  },
-  "devDependencies": {
-    "@ckeditor/ckeditor5-dev-build-tools": "^53.0.0",
-    "@ckeditor/ckeditor5-inspector": "^5.0.0",
-    "@ckeditor/ckeditor5-package-tools": "^4.1.1",
-    "@vitest/browser": "^3.2.4",
-    "@vitest/browser-webdriverio": "4.0.0-beta.15",
-    "@vitest/coverage-istanbul": "^3.2.4",
-    "ckeditor5": "latest",
-    "eslint": "^9.26.0",
-    "eslint-config-ckeditor5": "^12.1.0",
-    "eslint-plugin-ckeditor5-rules": "^12.1.0",
-    "globals": "^16.1.0",
-    "http-server": "^14.1.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^12.0.0",
-    "stylelint": "^16.0.0",
-    "stylelint-config-ckeditor5": "^12.1.0",
-    "vite-plugin-svgo": "~1.4.0",
-    "vitest": "^3.2.4",
-    "webdriverio": "^9.20.0"
+    "es-toolkit": "^1.43.0",
+    "mermaid": "^11.12.2"
   },
   "peerDependencies": {
-    "ckeditor5": ">=43.0.0 || ^0.0.0-nightly"
+    "@ckeditor/ckeditor5-core": ">=48.0.0 || ^0.0.0-nightly",
+    "ckeditor5": ">=48.0.0 || ^0.0.0-nightly"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-core": "latest",
+    "@ckeditor/ckeditor5-inspector": "^5.0.0",
+    "@typescript-eslint/parser": "^8.32.1",
+    "@vitest/browser-webdriverio": "^4.0.6",
+    "@vitest/coverage-istanbul": "^4.0.6",
+    "ckeditor5": "latest",
+    "eslint": "^9.27.0",
+    "eslint-config-ckeditor5": "^13.0.0",
+    "eslint-plugin-ckeditor5-rules": "^13.0.0",
+    "globals": "^16.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6",
+    "stylelint": "^16.0.0",
+    "stylelint-config-ckeditor5": "^13.0.0",
+    "typescript": "~5.5.4",
+    "vite": "^7.3.0",
+    "vite-plugin-svgo": "^2.0.0",
+    "vitest": "^4.0.6",
+    "webdriverio": "^9.19.2"
+  },
+  "overrides": {
+    "sugarss": "^5.0.1"
   },
   "scripts": {
-    "dll:build": "ckeditor5-package-tools dll:build",
-    "dll:serve": "http-server ./ -o sample/dll.html",
-    "build:dist": "node ./scripts/build-dist.mjs",
-    "lint": "eslint",
-    "start": "ckeditor5-package-tools start",
-    "stylelint": "stylelint --quiet --allow-empty-input 'theme/*.css'",
+    "start": "vite",
+    "build": "pnpm run build:types && pnpm run build:npm && pnpm run build:browser",
+    "build:npm": "vite build --mode npm",
+    "build:browser": "vite build --mode browser",
+    "build:types": "tsc -p tsconfig.build.json",
     "test": "vitest",
-    "build": "pnpm run dll:build && pnpm run build:dist",
-    "prepublishOnly": "pnpm run build",
-    "postinstall": "node ./scripts/postinstall.mjs"
+    "test:debug": "vitest --inspect-brk --no-file-parallelism --browser.headless=false",
+    "lint": "eslint",
+    "stylelint": "stylelint --quiet --allow-empty-input 'theme/**/*.css'",
+    "prepublishOnly": "pnpm run build"
   },
   "lint-staged": {
     "**/*": [

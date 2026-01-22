@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "lib": [
+      "ES2022", // Must match the "target".
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "types": [
+      "vite/client",
+      "./typings/ckeditor5-inspector",
+      "./typings/types"
+    ],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+  },
+  "include": [
+    "src",
+    "tests"
+  ]
+}

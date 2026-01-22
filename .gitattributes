@@ -8,6 +8,7 @@
 *.htm		text
 *.html		text
 *.js		text
+*.ts		text
 *.json		text
 *.php		text
 *.txt		text
