@@ -77,6 +77,7 @@ export default defineConfig( ( { mode } ) => {
 			globals: true,
 			watch: false,
 			coverage: {
+				allowExternal: true,
 				thresholds: {
 					lines: 100,
 					functions: 100,
@@ -85,7 +86,7 @@ export default defineConfig( ( { mode } ) => {
 				},
 				provider: 'istanbul',
 				include: [
-					'src'
+					'src/**/*.[jt]s'
 				]
 			}
 		}
@@ -104,7 +105,7 @@ export default defineConfig( ( { mode } ) => {
 				cssFileName: 'index',
 				fileName: ( format: string, name: string ) => name + '.js'
 			},
-			rollupOptions: {
+			rolldownOptions: {
 				external: externals( {
 					...pkgJson.dependencies,
 					...pkgJson.peerDependencies
@@ -127,10 +128,10 @@ export default defineConfig( ( { mode } ) => {
 				cssFileName: 'index',
 				fileName: ( format: string, name: string ) => name + '.' + format + '.js'
 			},
-			rollupOptions: {
+			rolldownOptions: {
 				external: externals( pkgJson.peerDependencies ),
 				output: {
-					inlineDynamicImports: true,
+					codeSplitting: false,
 					globals: {
 						'ckeditor5': 'CKEDITOR'
 					}

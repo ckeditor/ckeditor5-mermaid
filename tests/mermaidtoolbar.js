@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, it } from 'vitest';
 import { ClassicEditor, Essentials, Paragraph, WidgetToolbarRepository, _setModelData as setData } from 'ckeditor5';
 
-import Mermaid from '../src/mermaid.js';
+import { Mermaid } from '../src/mermaid.js';
 
 describe( 'MermaidToolbar', () => {
 	let editor, domElement, widgetToolbarRepository, balloon, toolbar, model;
