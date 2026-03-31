@@ -7,7 +7,7 @@ import {
 	_setModelData as setModelData
 } from 'ckeditor5';
 
-import Mermaid from '../src/mermaid.js';
+import { Mermaid } from '../src/mermaid.js';
 
 describe( 'Mermaid', () => {
 	it( 'should be named', () => {
