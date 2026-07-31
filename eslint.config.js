@@ -40,5 +40,28 @@ export default defineConfig( [
 				extensions: [ '.ts', '.js', '.json' ]
 			} ]
 		}
+	},
+	{
+		name: 'CSS config',
+		files: [ '**/*.css' ],
+
+		rules: {
+			// TODO (RTL): off pending a migration of physical properties/values to logical, the same way
+			// the `ckeditor5` repository defers it. Turning it on here would mean rewriting the widget theme
+			// (`min-height`, `width`, `height`, `resize: vertical`), which is an RTL change, not a lint change.
+			'css/prefer-logical-properties': 'off',
+
+			'css/use-baseline': [ 'error', {
+				available: 'widely',
+
+				allowProperties: [
+					// https://developer.mozilla.org/en-US/docs/Web/CSS/resize
+					// Not Baseline solely because Firefox for Android and Safari on iOS recognize it but apply
+					// no effect (mobile browsers show no resize handle regardless of this property) - a no-op
+					// gap on the browsers where it doesn't apply, not a real cross-browser risk.
+					'resize'
+				]
+			} ]
+		}
 	}
 ] );
