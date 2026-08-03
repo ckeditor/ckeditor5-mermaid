@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { ClassicEditor, Paragraph, _getModelData as getModelData, _setModelData as setModelData } from 'ckeditor5';
 
 import MermaidPreviewCommand from '../../src/commands/mermaidPreviewCommand.js';
