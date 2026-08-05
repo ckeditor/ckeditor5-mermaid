@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { Mermaid as MermaidExport } from '../src/index.js';
 import { Mermaid } from '../src/mermaid.js';
 

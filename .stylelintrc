@@ -1,6 +1,0 @@
-{
-	"extends": "stylelint-config-ckeditor5",
-	"ignoreFiles": [
-		"dist/**/*.css"
-	]
-}

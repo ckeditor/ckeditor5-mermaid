@@ -17,7 +17,7 @@
   "homepage": "https://github.com/ckeditor/ckeditor5-mermaid",
   "bugs": "https://github.com/ckeditor/ckeditor5-mermaid/issues",
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=24.11.0",
     "pnpm": ">=10.14.0"
   },
   "type": "module",
@@ -44,18 +44,15 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-core": "latest",
     "@ckeditor/ckeditor5-inspector": "^5.0.0",
-    "@typescript-eslint/parser": "^8.32.1",
     "@vitest/browser-webdriverio": "^4.1.2",
     "@vitest/coverage-istanbul": "^4.1.2",
     "ckeditor5": "latest",
-    "eslint": "^9.27.0",
-    "eslint-config-ckeditor5": "^13.0.0",
-    "eslint-plugin-ckeditor5-rules": "^13.0.0",
+    "eslint": "^10.0.0",
+    "eslint-config-ckeditor5": "^20.0.0",
+    "eslint-plugin-ckeditor5-rules": "^20.0.0",
     "globals": "^16.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
-    "stylelint": "^16.0.0",
-    "stylelint-config-ckeditor5": "^13.0.0",
     "typescript": "~5.5.4",
     "vite": "^8.0.3",
     "vite-plugin-svgo": "^2.0.0",
@@ -74,15 +71,11 @@
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --no-file-parallelism --browser.headless=false",
     "lint": "eslint",
-    "stylelint": "stylelint --quiet --allow-empty-input 'theme/**/*.css'",
     "prepublishOnly": "pnpm run build"
   },
   "lint-staged": {
     "**/*": [
       "eslint --quiet"
-    ],
-    "**/*.css": [
-      "stylelint --quiet --allow-empty-input"
     ]
   }
 }
